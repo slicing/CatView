@@ -2,6 +2,7 @@ package junit;
 
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
@@ -30,10 +31,10 @@ public class DumpTest {
     void shouldGetNumber(){
         final int[] numbers = dump.getNumbers();
         assertAll("numbers",
-                ()->assertEquals(numbers[0],0),
-                ()->assertEquals(numbers[1],1),
-                ()->assertEquals(numbers[2],2),
-                ()->assertEquals(numbers[3],3)
+                ()->assertEquals(0,numbers[0]),
+                ()->assertEquals(1,numbers[1]),
+                ()->assertEquals(2,numbers[2]),
+                ()->assertEquals(3,numbers[3])
         );
     }
 
@@ -42,7 +43,7 @@ public class DumpTest {
         assumeTrue(true);
         assertEquals(5+2,7);
     }
-
+    @DisplayName("newNameOn")
     @Test
     void shouldAssumtionThatOne(){
         String someString = "Just a String".concat("!");
