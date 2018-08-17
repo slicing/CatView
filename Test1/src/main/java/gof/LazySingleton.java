@@ -10,3 +10,9 @@ public class LazySingleton {
         return instance;
     }
 }
+class LazyGGG{
+    public static void main(String[] args) {
+        LazySingleton lazySingleton = LazySingleton.getInstance();
+        System.out.println(lazySingleton);
+    }
+}
