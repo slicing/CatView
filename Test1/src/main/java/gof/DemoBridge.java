@@ -36,7 +36,7 @@ class Triangle extends Shape{
 
     @Override
     public void applyColor() {
-        System.out.println("Triangle with color");
+        System.out.print("Triangle with color: ");
         color.applyColor();
     }
 }
@@ -48,7 +48,7 @@ class Circle extends Shape{
 
     @Override
     public void applyColor() {
-        System.out.println("Triangle with color");
+        System.out.print("Circle with color: ");
         color.applyColor();
     }
 }
