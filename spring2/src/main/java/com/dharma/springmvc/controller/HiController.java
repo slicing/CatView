@@ -20,7 +20,7 @@ public class HiController {
     IProduceService produceService;
     @GetMapping("/")
     public ResponseEntity<String> Hi(){
-        return new ResponseEntity<String>("First rest api ", HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>("First rest api ", HttpStatus.NOT_FOUND);
     }
 
     @GetMapping("/product/")
@@ -29,7 +29,7 @@ public class HiController {
         if(products.isEmpty()){
             new ResponseEntity<List<Product>>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<List<Product>>(products,HttpStatus.OK);
+        return new ResponseEntity<>(products,HttpStatus.OK);
     }
 
     @GetMapping("/product/{id}")
@@ -54,5 +54,27 @@ public class HiController {
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/product/{id}").buildAndExpand(product.getId()).toUri());
         return new ResponseEntity<>(headers,HttpStatus.CREATED);
+    }
+
+
+    @PutMapping("/product/")
+    public ResponseEntity<Product> updateProduct(@RequestBody Product product){
+        /*Product current = produceService.getProduct(id);
+        current.setName(product.getName());
+        current.setPrice(product.getPrice());
+        current.setCount(product.getCount());
+        produceService.updateProduct(current);*/
+        Product product1 = produceService.updateProduct(product);
+        return new ResponseEntity<>(product1,HttpStatus.OK);
+
+    }
+
+
+    @DeleteMapping("/product/{id}")
+    public ResponseEntity<Product> deleteProduct(@PathVariable long id){
+        boolean success = produceService.deleteProduct(id);
+        String response = success? "OK" : "NO OK";
+        return new ResponseEntity(response,HttpStatus.OK);
+
     }
 }

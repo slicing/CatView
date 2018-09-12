@@ -9,5 +9,8 @@ public interface IProduceService {
     Product getProduct(long id);
     boolean isProductExits(Product product);
     void addProduct(Product product);
+    Product updateProduct(Product product);
+    boolean deleteProduct(long id);
+
 
 }

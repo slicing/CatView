@@ -58,4 +58,23 @@ public class ProductService implements IProduceService{
         //product.setId(counter.incrementAndGet());
         products.add(product);
     }
+
+    @Override
+    public Product updateProduct(Product product) {
+        for(Product p : products){
+            if(p.getId() == product.getId()){
+                p.setName(product.getName());
+                p.setCount(product.getCount());
+                p.setPrice(product.getPrice());
+            }
+        }
+        return product;
+    }
+
+    @Override
+    public boolean deleteProduct(final long id) {
+        return products.removeIf((product) -> product.getId() == id);
+    }
+
+
 }
