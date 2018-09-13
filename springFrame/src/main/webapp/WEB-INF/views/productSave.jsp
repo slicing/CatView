@@ -18,6 +18,7 @@
             font-style: italic;
         }
     </style>
+
 </head>
 <body>
     <h1>NEW PROJECT</h1>
