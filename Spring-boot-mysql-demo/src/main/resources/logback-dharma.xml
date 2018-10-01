@@ -2,6 +2,7 @@
 
 <configuration>
     <property name="PATTERN" value="%-12(%d{yyyy-MM-dd HH:mm:ss.SSS}) |-%-5level [%thread] %c [%L] -| %msg%n"/>
+    <property name="TEST_FILE_PATH" value="/Users/mac/"/>
     <springProfile name = "dev">
         <appender name ="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
             <encoder>
@@ -11,6 +12,23 @@
         <logger name ="com.example.demo" level="debug"/>
         <root level="info">
             <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+
+    <springProfile name = "test">
+        <appender name ="TEST-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${TEST_FILE_PATH}/info.%d{yyyy-MM-dd}.log</fileNamePattern>
+                <MaxHistory>100</MaxHistory>
+            </rollingPolicy>
+
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>${PATTERN}</pattern>
+            </layout>
+        </appender>
+
+        <root level="info">
+            <appender-ref ref="TEST-FILE"/>
         </root>
     </springProfile>
 </configuration>
