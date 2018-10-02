@@ -1,17 +1,30 @@
 package com.example.demo.bean;
 
-public class Product {
-    private int id;
-    private String name;
-    private double count;
+import javax.persistence.*;
 
-    public Product(int id, String name, double count) {
+@Entity
+@Table(name="product")
+public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    @Column
+    private String name;
+    @Column
+    private double price;
+
+    public Product(int id, String name, double price) {
         this.id = id;
         this.name = name;
-        this.count = count;
+        this.price = price;
     }
 
     public Product() {
+    }
+
+    public Product(String name, double price) {
+        this.name = name;
+        this.price = price;
     }
 
     public int getId() {
@@ -30,11 +43,11 @@ public class Product {
         this.name = name;
     }
 
-    public double getCount() {
-        return count;
+    public double getPrice() {
+        return price;
     }
 
-    public void setCount(double count) {
-        this.count = count;
+    public void setPrice(double price) {
+        this.price = price;
     }
 }
