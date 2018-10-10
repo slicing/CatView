@@ -60,9 +60,11 @@ public class ApiController {
     }
 
 
-    @PostMapping("/product/update/{name}/{price}/{id}")
-    public int updateById(@PathVariable String name,@PathVariable double price,@PathVariable int id){
+    @PutMapping("/product/update/{id}")
+    public int updateById(@RequestParam String name,@RequestParam double price,@PathVariable int id){
         Product product = productDao.findById(id);
+        product.setName(name);
+        product.setPrice(price);
         return productDao.update(product);
     }
 
