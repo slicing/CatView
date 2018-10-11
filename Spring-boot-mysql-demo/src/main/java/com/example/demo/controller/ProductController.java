@@ -3,6 +3,8 @@ package com.example.demo.controller;
 import com.example.demo.bean.Product;
 import com.example.demo.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +21,8 @@ public class ProductController {
         return productService.getProducts();
     }
 
+
+    @Cacheable(value = "product",key = "#id",unless = "#result.price>5000")
     @GetMapping("/get/{id}")
     public Product getById(@PathVariable int id){
         return productService.getById(id);
