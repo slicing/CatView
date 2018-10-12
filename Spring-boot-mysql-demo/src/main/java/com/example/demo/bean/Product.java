@@ -1,10 +1,11 @@
 package com.example.demo.bean;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name="product")
-public class Product {
+public class Product implements Serializable {//redis缓存要进行序列化
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
