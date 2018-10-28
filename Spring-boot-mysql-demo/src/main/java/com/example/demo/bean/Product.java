@@ -1,15 +1,14 @@
 package com.example.demo.bean;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name="product")
-public class Product implements Serializable {//redis缓存要进行序列化
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column
+    @Column()
     private String name;
     @Column
     private double price;
