@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @ServletComponentScan
 @SpringBootApplication
 public class DemoApplication {
-	@Value("${slow.upload.path")
+	@Value("${slow.upload.path}")
 	String filePath;
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
